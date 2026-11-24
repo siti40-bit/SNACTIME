@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login – SnackTime</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍿</text></svg>">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="login-page">
+    <aside class="login-brand">
+      <div>
+        <div class="logo-name">Snack<span>Time</span></div>
+        <h1>Admin Dashboard</h1>
+        <p>Kelola produk, pesanan, pembayaran, pengiriman, dan laporan penjualan SnackTime dari satu tempat.</p>
+        <div class="brand-photos">
+          <img src="/images/keripik-pisang.jpg" alt="Keripik pisang">
+          <img src="/images/donat-mini.jpg" alt="Donat mini">
+          <img src="/images/basreng-pedas.jpg" alt="Basreng pedas">
+        </div>
+        <ul>
+          <li>Pantau pesanan masuk secara real-time</li>
+          <li>Verifikasi pembayaran transfer &amp; QRIS</li>
+          <li>Laporan penjualan siap cetak &amp; ekspor</li>
+        </ul>
+      </div>
+      <p style="font-size:.78rem;opacity:.75">© <span id="year">2026</span> SnackTime – Cemilan Favoritmu</p>
+    </aside>
+
+    <main class="login-main">
+      <form class="login-card" id="loginForm">
+        <span class="admin-badge">● ADMIN DASHBOARD SNACKTIME</span>
+        <h2>Masuk ke Dashboard</h2>
+        <p>Gunakan akun admin untuk mengelola toko SnackTime.</p>
+
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="Masukkan username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required>
+        </div>
+
+        <div class="form-error" id="loginError"></div>
+
+        <button class="btn btn-primary" type="submit" id="loginBtn">Masuk ke Dashboard</button>
+
+        <div class="demo-hint">Akun demo: <strong>ADMIN</strong> / <strong>ADMIN</strong><br>
+          <span style="font-size:.72rem">Ganti password sebelum aplikasi dipublikasikan.</span>
+        </div>
+        <a class="back-link" href="/index.html">← Kembali ke halaman toko</a>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('loginForm');
+    const errorBox = document.getElementById('loginError');
+    const btn = document.getElementById('loginBtn');
+
+    // Already signed in? Go straight to the dashboard.
+    fetch('/api/admin/me', { credentials: 'same-origin' })
+      .then((r) => { if (r.ok) location.replace('/admin/dashboard.html'); })
+      .catch(() => {});
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.remove('show');
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      if (!username || !password) {
+        errorBox.textContent = 'Username dan password wajib diisi.';
+        errorBox.classList.add('show');
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Memeriksa…';
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Username atau Password Salah');
+        location.replace('/admin/dashboard.html');
+      } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Masuk ke Dashboard';
+      }
+    });
+  </script>
+</body>
+</html>

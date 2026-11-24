@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SnackTime – Cemilan Favoritmu</title>
+  <meta name="description" content="SnackTime – toko cemilan online dengan aneka keripik, basreng, donat, cookies, dan minuman segar. Pesan antar, ambil sendiri, atau makan di tempat.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍿</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-badge"><span class="dot"></span> Buka setiap hari · 09.00 – 21.00 WIB</span>
+          <h1>Cemilan Enak,<br>Hari Jadi <em>Lebih Seru!</em></h1>
+          <p class="hero-lead">Dari keripik pisang yang renyah sampai basreng pedas yang bikin nagih — semua cemilan favoritmu tersedia di SnackTime, dibuat fresh setiap hari.</p>
+          <div class="hero-actions">
+            <a href="/menu.html" class="btn btn-primary btn-lg">Lihat Menu</a>
+            <a href="#cara-pesan" class="btn btn-ghost btn-lg">Cara Pesan</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong id="statProducts">10+</strong><span>Varian Cemilan</span></div>
+            <div><strong>4.9/5</strong><span>Rating Pelanggan</span></div>
+            <div><strong>3 Cara</strong><span>Dine In · Pickup · Delivery</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="photo p1"><img src="/images/donat-mini.jpg" alt="Donat mini topping cokelat"></div>
+          <div class="photo p2"><img src="/images/keripik-pisang.jpg" alt="Keripik pisang renyah"></div>
+          <div class="photo p3"><img src="/images/basreng-pedas.jpg" alt="Basreng pedas"></div>
+          <div class="floating-chip chip-rating">
+            <span class="ico">⭐</span>
+            <div>4.9 Rating<small>dari 800+ pelanggan</small></div>
+          </div>
+          <div class="floating-chip chip-delivery">
+            <span class="ico">🛵</span>
+            <div>Pesan Antar<small>siap antar ke rumahmu</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEUNGGULAN -->
+    <section class="features">
+      <div class="container feature-grid">
+        <div class="feature">
+          <span class="ico">🍟</span>
+          <div><strong>Selalu Fresh</strong><p>Digoreng dan dipanggang setiap hari, tanpa pengawet.</p></div>
+        </div>
+        <div class="feature">
+          <span class="ico">💸</span>
+          <div><strong>Harga Bersahabat</strong><p>Mulai Rp 8.000, cocok untuk pelajar dan mahasiswa.</p></div>
+        </div>
+        <div class="feature">
+          <span class="ico">⚡</span>
+          <div><strong>Pesan Cepat</strong><p>Checkout online, pesanan langsung diterima admin.</p></div>
+        </div>
+        <div class="feature">
+          <span class="ico">💬</span>
+          <div><strong>Konfirmasi WhatsApp</strong><p>Detail pesanan dikirim langsung ke WhatsApp.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUK -->
+    <section class="section" id="produk">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Menu Favorit</span>
+            <h2>Cemilan yang Paling Dicari</h2>
+            <p>Pilihan cemilan terlaris dari SnackTime. Semua dibuat dari bahan pilihan dan siap menemanimu kapan saja.</p>
+          </div>
+          <a href="/menu.html" class="btn btn-soft">Semua Menu →</a>
+        </div>
+        <div class="product-grid" id="homeProducts">
+          <div class="empty"><span class="emoji">🍿</span>Memuat cemilan…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="section about" id="tentang">
+      <div class="container about-grid">
+        <div class="about-photos">
+          <div class="col">
+            <img src="/images/cireng-isi.jpg" alt="Cireng isi" style="height:230px">
+            <img src="/images/es-teh-lemon.jpg" alt="Es teh lemon" style="height:170px">
+          </div>
+          <div class="col">
+            <img src="/images/makaroni-pedas.jpg" alt="Makaroni pedas" style="height:100%">
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Tentang Kami</span>
+          <h2>Dari Dapur Kecil, untuk Semua Kalangan</h2>
+          <p>SnackTime lahir dari kecintaan pada cemilan rumahan. Kami percaya bahwa camilan enak tidak harus mahal dan tidak perlu menunggu lama.</p>
+          <p>Setiap produk dibuat dalam porsi kecil agar selalu segar, dengan bumbu racikan sendiri — pedasnya pas, gurihnya bikin ingin lagi.</p>
+          <ul class="about-list">
+            <li><span class="tick">✓</span><div><strong>Bahan pilihan &amp; higienis.</strong> Diproses dengan standar kebersihan dapur yang ketat.</div></li>
+            <li><span class="tick">✓</span><div><strong>Ramah kantong.</strong> Harga mulai Rp 8.000 dengan porsi yang mengenyangkan.</div></li>
+            <li><span class="tick">✓</span><div><strong>Layanan lengkap.</strong> Makan di tempat, ambil sendiri, atau pesan antar sesuai kebutuhanmu.</div></li>
+          </ul>
+          <a href="/menu.html" class="btn btn-primary" style="margin-top:26px">Cobain Sekarang</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARA PESAN -->
+    <section class="section" id="cara-pesan">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Cara Pesan</span>
+            <h2>Pesan Cemilan Hanya 4 Langkah</h2>
+            <p>Tanpa aplikasi tambahan, tanpa antre panjang. Semua bisa selesai dari HP-mu.</p>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Pilih Cemilan</h3>
+            <p>Jelajahi menu, cari cemilan favoritmu, lalu tambahkan ke keranjang.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Atur Keranjang</h3>
+            <p>Sesuaikan jumlah porsi dan cek total pembayaran secara otomatis.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Tentukan Pesanan</h3>
+            <p>Pilih makan di tempat, ambil sendiri, atau pesan antar, lalu bayar sesuai metode favoritmu.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>Lacak Pesanan</h3>
+            <p>Simpan nomor pesanan dan pantau statusnya sampai cemilan tiba di tanganmu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-inner">
+          <div>
+            <h2>Lapar mata, lapar perut?</h2>
+            <p>Pesan sekarang dan rasakan cemilan SnackTime yang hangat, renyah, dan penuh rasa. Bisa diantar ke rumahmu hari ini.</p>
+          </div>
+          <a href="/menu.html" class="btn btn-lg">Pesan Sekarang →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Status Pesanan – SnackTime</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍿</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="breadcrumb"><a href="/index.html">Beranda</a> / Status Pesanan</div>
+        <h1 id="pageTitle">Status Pesanan</h1>
+        <p id="pageSubtitle">Masukkan nomor pesanan dan nomor WhatsApp untuk melihat bukti pesanan serta status terkini.</p>
+      </div>
+    </section>
+
+    <section class="container receipt-wrap">
+      <!-- Tracking form -->
+      <form class="panel track-form" id="trackForm">
+        <div class="panel-title">
+          <span class="num">🔎</span>
+          <div><h2>Lacak Pesanan</h2><p>Nomor pesanan kamu contohnya: SNK-20260101-0001</p></div>
+        </div>
+        <div class="field" style="margin-bottom:14px">
+          <label for="trackOrder">Nomor pesanan</label>
+          <input id="trackOrder" type="text" placeholder="SNK-XXXXXXXX-XXXX" autocomplete="off" required>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="trackWa">Nomor WhatsApp</label>
+          <input id="trackWa" type="tel" placeholder="08xxxxxxxxxx" maxlength="18" required>
+        </div>
+        <div class="form-error" id="trackError"></div>
+        <button class="btn btn-primary btn-block" type="submit">Lihat Pesanan</button>
+      </form>
+
+      <!-- Receipt -->
+      <div id="receiptArea" style="display:none">
+        <div class="receipt">
+          <div class="receipt-card">
+            <div class="receipt-head">
+              <div>
+                <h2>Bukti Pesanan</h2>
+                <div class="small" id="receiptStore">SnackTime</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:1.05rem;font-weight:800" id="receiptNumber">—</div>
+                <div class="small" id="receiptDate">—</div>
+              </div>
+            </div>
+            <div class="receipt-body">
+              <div id="receiptStatus" style="margin-bottom:16px"></div>
+              <div class="receipt-meta">
+                <div><span>Nama pelanggan</span><strong id="rName">—</strong></div>
+                <div><span>WhatsApp</span><strong id="rWa">—</strong></div>
+                <div><span>Metode pemesanan</span><strong id="rMethod">—</strong></div>
+                <div><span>Metode pembayaran</span><strong id="rPayment">—</strong></div>
+              </div>
+              <div id="rDelivery" style="display:none;background:var(--cream);border:1px dashed var(--line);border-radius:14px;padding:14px;margin-bottom:20px;font-size:.85rem">
+                <strong style="display:block;margin-bottom:4px">Alamat Pengiriman</strong>
+                <div id="rDeliveryText"></div>
+              </div>
+              <table class="items-table">
+                <thead><tr><th>Produk</th><th>Qty</th><th>Harga</th><th>Subtotal</th></tr></thead>
+                <tbody id="rItems"></tbody>
+              </table>
+              <div class="totals">
+                <div><span>Subtotal produk</span><span id="rSubtotal">—</span></div>
+                <div><span>Ongkos pengiriman</span><span id="rShipping">—</span></div>
+                <div class="grand"><span>Total pembayaran</span><span id="rTotal">—</span></div>
+              </div>
+              <div id="rNote" style="display:none;margin-top:16px;font-size:.83rem;color:var(--ink-soft)"></div>
+              <div class="no-print" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+                <button class="btn btn-primary" id="btnConfirm" type="button">Konfirmasi Pesanan</button>
+                <a class="btn btn-outline" id="btnWa" href="#" target="_blank" rel="noopener">Kirim ke WhatsApp</a>
+                <button class="btn btn-ghost" id="btnRefresh" type="button">Lihat Status Pesanan</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="panel" style="margin-bottom:20px">
+              <h3 style="font-size:1.02rem;margin-bottom:16px">Perjalanan Pesanan</h3>
+              <ul class="timeline" id="timeline"></ul>
+            </div>
+            <div class="panel" id="paymentPanel">
+              <h3 style="font-size:1.02rem;margin-bottom:12px">Informasi Pembayaran</h3>
+              <div id="paymentPanelBody" style="font-size:.85rem;color:var(--ink-soft)"></div>
+            </div>
+            <div class="panel" style="margin-top:20px;text-align:center">
+              <p style="font-size:.85rem;color:var(--ink-soft);margin-bottom:12px">Ada pertanyaan tentang pesananmu?</p>
+              <a class="btn btn-soft btn-block" id="btnChatStore" href="#" target="_blank" rel="noopener">Chat Penjual</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/order.js"></script>
+</body>
+</html>
