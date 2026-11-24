@@ -250,13 +250,16 @@ function notify(type, message, orderId = null) {
 /* ----------------------------- static ----------------------------- */
 
 // Uploaded files may live outside public/ (e.g. /tmp on serverless), so serve them explicitly.
-app.get('/uploads/:file', (req, res, next) => {
+// /api/uploads/:file is the same handler for Vercel, where /uploads is rewritten here.
+function sendUpload(req, res, next) {
   const file = path.basename(String(req.params.file || ''));
   if (!file) return next();
   const target = path.join(UPLOAD_DIR, file);
   if (!fs.existsSync(target)) return res.status(404).end();
   res.sendFile(target);
-});
+}
+app.get('/uploads/:file', sendUpload);
+app.get('/api/uploads/:file', sendUpload);
 
 app.use('/api', (_req, res, next) => {
   res.setHeader('Cache-Control', 'no-store');
